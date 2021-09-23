@@ -1,50 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/css/uikit.min.css" />
-    <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="stylesheet" href="./Assets/css/style.css">
     <title>Tempo Finder</title>
 </head>
+
 <body>
-    <header class="hero">
-        <h1 class="app-title">Tempo Finder</h1>
-        <h2>What's your tempo?</h2>
-        <div class="search-bar">
-            <label for="tempo-search">Enter a number between 40-220</label>
-            <input type="text" class="search-value" name="tempo-search" placeholder="Enter a number between 40-220">
-            <button type="submit" class="submitBtn">Submit</button>
-        </div>
-    </header>
+    <div class="container"> <!-- Open Container -->
 
-    <aside class="saved-songs">
-        <div class="playlist-item">
-            <img src=>
-            <p>Artist and song title placeholder</p>
-            <p>remove song placeholder</p>
-        </div>
-    </aside>
+        <div class="header">
+            <header class="hero">
+                <h1 class="app-title">Tempo Finder</h1>
+                <h2>What's your tempo?</h2>
 
-    <main class="song-repo">
-        <section>
-            <img src="">
-            <div class="song-title">
-                <h3>""</h3>
-                <div class="artist-info">
-                    <ul>
-                        <li>Artist</li>
-                        <li>BPM</li>
-                        <li>Genre</li>
-                    </ul>
+                    <form class="search-bar">
+                        <label for="tempo-search"></label>
+                        <input type="text" class="search-value" name="tempo-search"
+                            placeholder="Enter a number between 40-220" required>
+                        <button type="submit" class="submitBtn">Submit</button>
+                    </form>
+            </header>
+        </div> <!-- Close header section -->
+
+
+        <section class="song-repo"> <!-- Sidebar -->
+            <aside class="saved-songs">
+                <div class="playlist-item">
+                    <img src=>
+                    <p>Artist and song title placeholder</p>
+                    <p>remove song placeholder</p>
                 </div>
-            </div>
-            
-            
-        </section>
-    </main>
+            </aside>
+        </section> <!-- Close Sidebar -->
 
-    <footer>API Credit, copyright, made by</footer>
+
+        <div class="content"> <!-- Main Container -->
+            <section class="song-repo">
+                <img src="">
+                <div class="song-title">
+                    <h3>""</h3>
+                    <div class="artist-info">
+                        <ul>
+                            <li>Artist</li>
+                            <li>BPM</li>
+                            <li>Genre</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div> <!-- End of Main Container -->
+
+    <section class="footer"> <!-- Footer Section -->
+        <footer>
+         
+            <ul class="list-inline">
+           <li class="copy"><small>Team 1 &copy2021</small></li>
+           <li class="credit"><small>API by ...</small></li>
+           <li class="made"><small>Made with love❤️</small><a ></a></li>
+           </ul>
+           
+        </footer>
+    </section> <!-- End of Foot Section -->
+
+    </div> <!-- Close Container -->
 </body>
+
 </html>
