@@ -1,6 +1,10 @@
 let searchBtnEl = document.querySelector("#search-button")
+let searchInputEl = document.querySelector("#search-value")
 
-
+let bpmApi = {
+    url: "https://api.getsongbpm.com/tempo/",
+    api_key: "d6d1431d02fa9c2f938ab2a8074ef686"
+}
 
 
 
@@ -9,7 +13,7 @@ let searchBtnEl = document.querySelector("#search-button")
 
 
 function searchBtnHandler() {
-    fetch("https://api.getsongbpm.com/tempo/?api_key=d6d1431d02fa9c2f938ab2a8074ef686&bpm=130")
+    fetch(`${bpmApi.url}?api_key=${bpmApi.api_key}&bpm=${searchInputEl.value}`)
     .then(response => {return response.json()})
     .then(data => {
         console.log("Song Title: ", data.tempo[0].song_title)
