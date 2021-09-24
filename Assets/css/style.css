@@ -1,12 +1,3 @@
-:root {
-    --primary: #fff;
-    --secondary: #fff;
-    --terciary: #fff;
-    --light-dark: #fff;
-    --dark: #fff;
-    --border-radius: .3rem;
-}
-
 /* ///GRID SECTION/// */
 .container div {
     background: #ccc;
@@ -35,7 +26,7 @@
   .saved-songs {
     grid-area: saved-songs;
   }
-  
+
   .footer {
     grid-area: footer;
   }
