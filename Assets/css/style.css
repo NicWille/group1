@@ -77,6 +77,10 @@ h2 {
     color: black;
       }
   
+.submitBtn:hover {
+    background-color: lightblue;
+}
+
 .search-value { 
     height:12px;
     width:300px;
