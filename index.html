@@ -1,50 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.7.3/dist/css/uikit.min.css" />
-    <link rel="stylesheet" href="Assets/css/style.css">
+    <link rel="stylesheet" href="./Assets/css/style.css">
     <title>Tempo Finder</title>
 </head>
+
 <body>
-    <header class="hero">
-        <h1 class="app-title">Tempo Finder</h1>
-        <h2>What's your tempo?</h2>
-        <div class="search-bar">
-            <label for="tempo-search">Enter a number between 40-220</label>
-            <input type="text" class="search-value" id="search-value" name="tempo-search" placeholder="Enter a number between 40-220">
-            <button type="button" class="search-button" id="search-button">Find Songs</button>
-        </div>
-    </header>
 
-    <aside class="saved-songs">
-        <div class="playlist-item">
-            <img src=>
-            <p>Artist and song title placeholder</p>
-            <p>remove song placeholder</p>
-        </div>
-    </aside>
+  
+    <div class="container">
+        <!-- Open Container -->
 
-    <main>
-        <!-- <section>
-            <img class="main-album-art" src="./Assets/images/No-album-art.png">
-            <div class="right-half">
-                <div class="title-container">
-                    <h3>"Song Title"</h3>
-                    <p>+</p>
+        <div class="header">
+            <header class="hero">
+                <h1 class="app-title">Tempo Finder</h1>
+                <h2>What's your tempo?</h2>
+
+                <form class="search-bar">
+                    <label for="tempo-search"></label>
+                    <input type="text" class="search-value" name="tempo-search"
+                        placeholder="Enter a number between 40-220" required>
+                    <button type="submit" class="submitBtn" id="search-value">Submit</button>
+                </form>
+            </header>
+        </div> <!-- Close header section -->
+
+
+        <section class="song-repo">
+            <!-- Sidebar -->
+            <aside class="saved-songs">
+                <div class="playlist-item">
+                    <img src=>
+                    <p>Artist and song title placeholder</p>
+                    <p>remove song placeholder</p>
                 </div>
-                <ul>
-                    <li>Artist: <span>data</span></li>
-                    <li>BPM: <span>data</span></li>
-                    <li>Genre: <span>data</span></li>
-                </ul>
-            </div>
-        </section> -->
-    </main>
+            </aside>
+        </section> <!-- Close Sidebar -->
 
-    <footer>API Credit, copyright, made by</footer>
+
+          
+          
+            
+          
+          <main>
+          </main>
+
+        <section class="footer">
+            <!-- Footer Section -->
+            <footer>
+                <ul>
+                    <li class="credit">API by:</li>
+                    <li class="made">
+                        <h4>Made with love❤️</h4>
+                    </li>
+                    <li class="copy" clearfix>Group 1 copyright &copy2021</li>
+                </ul>
+            </footer>
+        </section> <!-- End of Foot Section -->
+
+    </div> <!-- Close Container -->
+
     <script src="./Assets/js/script.js"></script>
+
 </body>
+
 </html>
