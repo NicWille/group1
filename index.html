@@ -12,7 +12,7 @@
 
 <body>
 
-  
+
     <div class="container">
         <!-- Open Container -->
 
@@ -23,32 +23,28 @@
 
                 <form class="search-bar">
                     <label for="tempo-search"></label>
-                    <input type="text" class="search-value" id="search-value"  name="tempo-search"
-                        placeholder="Enter a number between 40-220" required>
-                    <button type="submit" class="submitBtn" id="search-button">Submit</button>
+                    <input type="text" class="search-value" name="tempo-search" id="search-value" placeholder="Enter a number between 40-220" required>
+                    <button type="button" class="submitBtn" id="search-button">Submit</button>
                 </form>
             </header>
         </div> <!-- Close header section -->
 
-
-        <section class="song-repo">
-            <!-- Sidebar -->
-            <aside class="saved-songs">
-                <div class="playlist-item">
-                    <img src=>
-                    <p>Artist and song title placeholder</p>
-                    <p>remove song placeholder</p>
+        <!-- Sidebar -->
+        <div class="uk-card uk-grid-collapse uk-child-width-1-2@s uk-margin saved-songs uk-grid">
+            <div class="uk-card-media-left uk-cover-container song-repo">
+                <img src="https://getuikit.com/docs/images/light.jpg" alt="" uk-cover>
+                <canvas width="400" height="400"></canvas>
+            </div>
+            <div>
+                <div class="uk-card-body playlist-item">
+                    <p class="uk-card-title">Artist and song title placeholder</p>
                 </div>
-            </aside>
-        </section> <!-- Close Sidebar -->
 
+            </div>
+        </div>
 
-          
-          
-            
-          
-          <main>
-          </main>
+        <main>
+        </main>
 
         <section class="footer">
             <!-- Footer Section -->
@@ -65,6 +61,8 @@
 
     </div> <!-- Close Container -->
 
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./Assets/js/script.js"></script>
 
 </body>
