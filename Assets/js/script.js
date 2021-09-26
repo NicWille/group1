@@ -133,7 +133,7 @@ function searchBtnHandler() {
 function populateMainSection(songs) {
 
     let songList = ""
-    let numOfSongs = 12
+    let numOfSongs = 5
     for (let i=0; i<numOfSongs; i++) {
 
         let tempSection = 
@@ -160,5 +160,15 @@ function populateMainSection(songs) {
 //////////////: Event Listeners Below ://////////////////////////
 
 searchBtnEl.addEventListener("click", searchBtnHandler)
+
 weatherBtnEl.addEventListener("click", weatherBtnHandler)
 locationBtnEl.addEventListener("click", locationBtnHandler)
+
+
+//////////////// Gigi /////////////////
+// Add real-time year
+const date = dayjs(year.dataset.YYYY).format("YYYY");
+const yearEl = document.querySelector("#year");
+    yearEl.innerText = date;
+    console.log(date);
+

@@ -22,6 +22,7 @@
 
                 <form class="search-bar">
                     <label for="tempo-search"></label>
+
                     <input type="text" class="search-value" name="tempo-search" id="search-value" placeholder="Enter a value 40-220" required>
                     <button type="button" class="submitBtn" id="search-button">Submit</button> <br>
                     <h2> Get the weather for your run</h2>
@@ -29,8 +30,14 @@
                     <button type="button" class="submitBtn" id="weather-button">Submit</button> <br><br>
                     <button type="button" class="submitBtn" id="location-button">Use Current Location</button>
                     <p id="locationAlert"></p>
+
+                    <input type="text" class="search-value" name="tempo-search" id="search-value" placeholder="Enter a number between 40-220" required>
+                    <button type="button" class="submitBtn btn-style" id="search-button">Submit</button>
+
                 </form>
+
             </header>
+
         </div> <!-- Close header section -->
 
         <!-- Sidebar -->
@@ -39,6 +46,7 @@
                 <img src="https://getuikit.com/docs/images/light.jpg" alt="" uk-cover>
                 <canvas width="400" height="400"></canvas>
             </div>
+            
             <div>
                 <div class="uk-card-body playlist-item">
                     <p class="uk-card-title">Artist and song title placeholder</p>
@@ -54,18 +62,21 @@
             </div>
         </div>
 
-        <main>
+        <main class="wallpaper">
         </main>
-
+        
+        <!-- Footer Section -->
         <section class="footer">
-            <!-- Footer Section -->
+            
             <footer>
                 <ul>
-                    <li class="credit">API by:</li>
+                    <li class="credit">API by: getsongbpm</li>
                     <li class="made">
                         <h4>Made with love❤️</h4>
                     </li>
-                    <li class="copy" clearfix>Group 1 copyright &copy2021</li>
+                    <li class="copy" clearfix>Group 1 &copy
+                        <span id="year" data-date="YYYY"></span> <!-- Gigi --> 
+                    </li>
                 </ul>
             </footer>
         </section> <!-- End of Foot Section -->
@@ -74,6 +85,7 @@
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://unpkg.com/dayjs"></script> <!-- Gigi --> 
     <script src="./Assets/js/script.js"></script>
 
 </body>
