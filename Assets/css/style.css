@@ -88,7 +88,7 @@ h2 {
 }
   
 .submitBtn:hover {
-    background-color: rgb(247, 108, 15); /* Gigi */ 
+    background-color: rgb(247, 108, 15); /* Gigi */   
 }
 
 .search-value { 
@@ -212,7 +212,6 @@ main ul li {
     display: flex;
     justify-content: space-between;
 }
-
 
 /* Weather Styling */
 .weather-container {
