@@ -12,7 +12,6 @@ let bpmApi = {
 
 //////////////: Global Variables Above ://////////////////////////
 
-
 function searchBtnHandler() {
     fetch(`${bpmApi.url}?api_key=${bpmApi.api_key}&bpm=${searchInputEl.value}`)
     .then(response => {return response.json()})
