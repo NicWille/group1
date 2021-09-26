@@ -11,33 +11,20 @@
 </head>
 
 <body>
-
     <div class="container">
         <!-- Open Container -->
-
         <div class="header">
             <header class="hero">
                 <h1 class="app-title">Tempo Finder</h1>
-                <h2>What's your tempo?</h2>
-
+                <h2>Enter Your Tempo for A Great Play List And Local Weather</h2>
                 <form class="search-bar">
                     <label for="tempo-search"></label>
-
                     <input type="text" class="search-value" name="tempo-search" id="search-value" placeholder="Enter a value 40-220" required>
                     <button type="button" class="submitBtn" id="search-button">Submit</button> <br>
-                    <h2> Get the weather for your run</h2>
-                    <input type="text" class="search-weather" name="weather-search" id="weather-value" placeholder="Weather: City, State">
-                    <button type="button" class="submitBtn" id="weather-button">Submit</button> <br><br>
-                    <button type="button" class="submitBtn" id="location-button">Use Current Location</button>
+
                     <p id="locationAlert"></p>
-
-                    <input type="text" class="search-value" name="tempo-search" id="search-value" placeholder="Enter a number between 40-220" required>
-                    <button type="button" class="submitBtn btn-style" id="search-button">Submit</button>
-
                 </form>
-
             </header>
-
         </div> <!-- Close header section -->
 
         <!-- Sidebar -->
@@ -52,7 +39,7 @@
                     <p class="uk-card-title">Artist and song title placeholder</p>
                 </div>
                 <div class="uk-card-media-left weather-container">
-                    <p id="weatherTitle" class="uk-card-title">Weather Information</p>
+                    <p id="weatherTitle" class="uk-card-title">Weather Information<span id="weatherTitle2"></span></p>
                         <p id="temp"></p>
                         <p id="wind"></p>
                         <p  id="humidity"></p>
