@@ -61,9 +61,7 @@ body {
 .wallpaper { 
     background-image: 
     url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9eHkUTED0pKnXFr4uDeCnDdG9bmgtiZCVpwTntvJF3PxedtZ9315jmOIJ5GdbiTf4jG8&usqp=CAU);
-
 }
-
 
 .app-title {
       font-family: Chalkduster;
@@ -87,17 +85,11 @@ h2 {
     margin: -8px;
     background-color: orange;
     color: black;
-      }
+}
   
 .submitBtn:hover {
-    background-color: lightblue;
-}
-
-.btn-style:hover {
     background-color: rgb(247, 108, 15); /* Gigi */   
 }
-    
-
 
 .search-value { 
     height:12px;
@@ -130,33 +122,30 @@ h2 {
 .uk-card {
     border-radius: 30px; /* Gigi */
 }
-        
-
   
 footer {
     background-color: orange;
     color: white;
     padding: 10px;
 }
-      
+  
 ul {
     list-style: none; /* Remove bullets */
     text-align: center;
 }
-
+  
 ul li {
     display: inline-block ;
     padding-top: 15px;
     margin: 0px 130px; /* Spacing between lines */
 }
- 
-
+  
 ul li h4 {
     padding-top: 15px;
     color: white;
     font-weight: bold;
 }
-
+  
 main section {
     display: flex;
     border: solid 3px black;

@@ -8,7 +8,7 @@ let bpmApi = {
 
 ////START WEATHER FUNCTION////
 
-//Weater Variables//
+//Start Global Weater Variables
 var weatherBtnEl = document.querySelector("#weather-button");
 var weatherInputEl = document.querySelector("#weather-value");
 var locationBtnEl = document.querySelector("#location-button");
@@ -21,41 +21,10 @@ var iconPath = "http://openweathermap.org/img/wn/";
 var cityLocation;
 var latitude;
 var longitude;
+var locationInformaiton;
+//End Global Weather Variables
 
-//Start Get Lat Lng From City Name
-function weatherBtnHandler() {
-    fetch('https://maps.googleapis.com/maps/api/geocode/json?key=' + googleAPIKey +'&address='+ weatherInputEl.value)
-    .then(function(response) {
-        if (response.ok) {
-            console.log(response);
-            response.json().then(function(cityData) {
-                cityLocation = (cityData.results[0].geometry.location);
-                console.log(cityLocation);
-                latitude = cityLocation.lat;
-                longitude = cityLocation.lng;
-                getCityName();
-                getWeatherFromLocation();
-            });
-        } else {
-            alert("Something went wrong.  Please try again");
-        }
-    })
-    .catch(function(error) {
-        alert("Unable to complete City Search function")
-    });
-}
-//End Get Lat Lng From City Name
-
-//Start Get City Name From Search Box
-  //Not being used unless I can figure out reverse geocoding
- function getCityName () {
-     cityNfo = weatherInputEl.value;
-     cityInfo = cityNfo.split(",");
-    cityName = cityInfo[0];
-}
-//End Get City Name From Search Box
-
-//Start Get Weather Information
+//Start Get Weather Information from User Location
 function getWeatherFromLocation(){
     fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude +'&lon=' + longitude +'&units=imperial&excludeminutely,alerts&appid=' + oneCallAPIKey)
     .then(function(response){
@@ -68,16 +37,38 @@ function getWeatherFromLocation(){
         populateWeather();
     })
 }
-//End Get Weather Information
+//End Get Weather Information from User Location
 
+//Start Get City Name from User Location
+function getCityName() {
+    fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude +'&key=' + googleAPIKey)
+    .then(function(response) {
+        if (response.ok) {
+            console.log(response);
+            response.json().then(function(locationInfo) {
+                locationInformation =(locationInfo.results[0].address_components);
+                cityName = locationInformation[2].long_name
+                console.log(cityName);
+                getWeatherFromLocation();
+            });
+        } else {
+            alert("Something went wrong.  Please try again");
+        }
+    })
+    .catch(function(error) {
+        alert("Unable to complete City Search function")
+    });
+}
+//End Get City Name from User Location
 
+//Start Populate Weather Data
 function populateWeather() {
     var uvIn = currentWeather.uvi;
     var iconCurrent = currentWeather.weather[0].icon;
     var currentIcon = $(document.createElement('img'));
     currentIcon.attr('src', iconPath + iconCurrent + ".png");
     currentIcon.addClass("iconImage");
-    $('#weatherTitle').text("Current Weather");
+    $('#weatherTitle').text(cityName + " Weather");
     $('#weatherTitle').append(currentIcon);
     $('#temp').text("Temp: " + currentWeather.temp +String.fromCharCode(176) + "F");
     $('#wind').text("Wind: " + currentWeather.wind_speed + " MPH");
@@ -92,9 +83,10 @@ function populateWeather() {
             uvEl.removeClass("uVLow uVModerate").addClass("uVHigh")
         }
 }
+//End Populate Weather Data
 
 //Start Get User Location
-function locationBtnHandler (){
+function getUserLocation (){
     var lcn =[];
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -103,18 +95,16 @@ function locationBtnHandler (){
     windowAlert("Geolocation is not supported by this browser."); //NEEDS TO BECOME MODAL
   }
 }
-
 function showPosition(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-    getWeatherFromLocation();
+    getCityName();
 }
 //End Get User Location
 
-////END WEATHER FUNCTION////
+/////END WEATHER FUNCTION/////
 
 //////////////: Global Variables Above ://////////////////////////
-
 
 function searchBtnHandler() {
     fetch(`${bpmApi.url}?api_key=${bpmApi.api_key}&bpm=${searchInputEl.value}`)
@@ -131,7 +121,6 @@ function searchBtnHandler() {
 }
 
 function populateMainSection(songs) {
-
     let songList = ""
     let numOfSongs = 5
     for (let i=0; i<numOfSongs; i++) {
@@ -154,16 +143,12 @@ function populateMainSection(songs) {
         songList = songList + tempSection
     }
     mainEl.innerHTML = songList
+    getUserLocation();
 }
-
 
 //////////////: Event Listeners Below ://////////////////////////
 
 searchBtnEl.addEventListener("click", searchBtnHandler)
-
-weatherBtnEl.addEventListener("click", weatherBtnHandler)
-locationBtnEl.addEventListener("click", locationBtnHandler)
-
 
 //////////////// Gigi /////////////////
 // Add real-time year
