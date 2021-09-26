@@ -93,6 +93,12 @@ h2 {
     background-color: lightblue;
 }
 
+.btn-style:hover {
+    background-color: rgb(247, 108, 15); /* Gigi */   
+}
+    
+
+
 .search-value { 
     height:12px;
     width:150px;
@@ -248,3 +254,7 @@ main ul li {
     background-color: red;
     color: white;
 }
+
+
+
+
