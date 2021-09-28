@@ -157,10 +157,6 @@ function populateMainSection(songs) {
 
 function plusBtnHandler(e) {
 
-//////////////: Event Listeners Below ://////////////////////////
-
-    searchBtnEl.addEventListener("click", searchBtnHandler)
-
     let index = e.target.id.split("-").slice(-1)[0]
     let art = songInfoArr[index].art
     let title = songInfoArr[index].title
@@ -188,6 +184,13 @@ function populateAsideSection() {
     }
     asideEl.innerHTML = asideSongs
 }
+
+//////////////: Event Listeners Below ://////////////////////////
+
+searchBtnEl.addEventListener("click", searchBtnHandler)
+populateAsideSection()
+
+
 
 //////////////// Gigi /////////////////
 // Add real-time year
@@ -218,14 +221,4 @@ getStarted.addEventListener("click", () => {
         popup.style.display = "none";
 
   });
-
-searchBtnEl.addEventListener("click", searchBtnHandler)
-populateAsideSection()
-
-//////////////// Gigi /////////////////
-// Add real-time year
-const date = dayjs(year.dataset.YYYY).format("YYYY");
-const yearEl = document.querySelector("#year");
-    yearEl.innerText = date;
-    console.log(date);
 
