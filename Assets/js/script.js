@@ -157,6 +157,10 @@ function populateMainSection(songs) {
 
 function plusBtnHandler(e) {
 
+//////////////: Event Listeners Below ://////////////////////////
+
+    searchBtnEl.addEventListener("click", searchBtnHandler)
+
     let index = e.target.id.split("-").slice(-1)[0]
     let art = songInfoArr[index].art
     let title = songInfoArr[index].title
@@ -185,7 +189,35 @@ function populateAsideSection() {
     asideEl.innerHTML = asideSongs
 }
 
-//////////////: Event Listeners Below ://////////////////////////
+//////////////// Gigi /////////////////
+// Add real-time year
+const date = dayjs(year.dataset.YYYY).format("YYYY");
+const yearEl = document.querySelector("#year");
+    yearEl.innerText = date;
+    console.log(date);
+
+////// Auto popup after 1 second ///////
+const popup = document.querySelector("#popup");
+const close = document.querySelector("#close");
+const getStarted = document.querySelector("#getStarted");
+
+window.onload = function() {
+    setTimeOut(function() {
+      popup.style.display = "block"
+    }, 2000)
+  }
+
+// Modal disappears on click of Close button
+close.addEventListener("click", () => {
+  popup.style.display = "none";
+});
+
+
+// Modal disappears on click of Get Started button
+getStarted.addEventListener("click", () => { 
+        popup.style.display = "none";
+
+  });
 
 searchBtnEl.addEventListener("click", searchBtnHandler)
 populateAsideSection()
