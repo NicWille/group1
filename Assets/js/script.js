@@ -113,17 +113,10 @@ function searchBtnHandler() {
     fetch(`${bpmApi.url}?api_key=${bpmApi.api_key}&bpm=${searchInputEl.value}`)
     .then(response => {return response.json()})
     .then(data => {
-        // console.log("Song Title: ", data.tempo[0].song_title)
-        // console.log("Artists Name: ", data.tempo[0].artist.name)
-        // console.log("Album cover art ref: ", data.tempo[0].artist.img)
-        // console.log("Genre: ", data.tempo[0].artist.genres[0])
-        // console.log("Tempo: ", data.tempo[0].tempo)
         populateMainSection(data.tempo)
     })
     .catch(err => {console.error(err)});
 }
-
-
 
 function populateMainSection(songs) {
 
@@ -136,7 +129,6 @@ function populateMainSection(songs) {
             title: songs[i].song_title,
             artist: songs[i].artist.name
         }
-// generate random id 
         let tempSection = 
             `<section>
             <img class="main-album-art" src="${songs[i].artist.img}" onerror=this.src="./Assets/images/blank-album.jpeg">
@@ -156,7 +148,6 @@ function populateMainSection(songs) {
         songInfoArr.push(songInfo)
     }
     mainEl.innerHTML = songList
-
     let plusBtnElArr = document.querySelectorAll(".plus-button")
     plusBtnElArr.forEach((el) => {
         el.addEventListener("click", plusBtnHandler)
@@ -174,26 +165,21 @@ function plusBtnHandler(e) {
     populateAsideSection()
 }
 
-
 function populateAsideSection() {
 
     let asideSongs = ''
     for (let i=0; i<localStorage.length; i++) {
 
-        let asideTempSong =`<div class="saved-song uk-card uk-grid-collapse uk-child-width-1-2@s uk-margin saved-songs uk-grid>
-        <div class="uk-card-media-left uk-cover-container song-repo">
+        let asideTempSong =
+        `<div class="saved-song uk-card uk-grid-collapse uk-child-width-1-2@s uk-margin saved-songs uk-grid>
+            <div class="uk-card-media-left uk-cover-container song-repo">
                 <img src="${localStorage.getItem(localStorage.key(i)[0]).split(",")[0]}" alt="" onerror=this.src="./Assets/images/blank-album.jpeg" height="100px" width="100px">
                 <div class="flex-container uk-card-body playlist-item">
-                    <h3 class="uk-card-title">
-                        ${localStorage.getItem(localStorage.key(i)[0]).split(",")[1]}
-                    </h3>
-                    <p>
-                        ${localStorage.getItem(localStorage.key(i)[0]).split(",")[2]}
-                    </p>
+                    <h3 class="uk-card-title">${localStorage.getItem(localStorage.key(i)[0]).split(",")[1]}</h3>
+                    <p>${localStorage.getItem(localStorage.key(i)[0]).split(",")[2]}</p>
                 </div>
-        </div>
-                
-            </div>`
+            </div>      
+        </div>`
         asideSongs = asideSongs + asideTempSong
     }
     asideEl.innerHTML = asideSongs
@@ -203,8 +189,6 @@ function populateAsideSection() {
 
 searchBtnEl.addEventListener("click", searchBtnHandler)
 populateAsideSection()
-
-
 
 //////////////// Gigi /////////////////
 // Add real-time year
