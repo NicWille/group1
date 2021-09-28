@@ -1,10 +1,13 @@
 let searchBtnEl = document.querySelector("#search-button")
 let searchInputEl = document.querySelector("#search-value")
 let mainEl = document.querySelector("main")
+let asideEl = document.querySelector("aside")
 let bpmApi = {
     url: "https://api.getsongbpm.com/tempo/",
     api_key: "d6d1431d02fa9c2f938ab2a8074ef686"
 }
+let songInfoArr = []
+
 
 ////START WEATHER FUNCTION////
 
@@ -110,28 +113,29 @@ function searchBtnHandler() {
     fetch(`${bpmApi.url}?api_key=${bpmApi.api_key}&bpm=${searchInputEl.value}`)
     .then(response => {return response.json()})
     .then(data => {
-        // console.log("Song Title: ", data.tempo[0].song_title)
-        // console.log("Artists Name: ", data.tempo[0].artist.name)
-        // console.log("Album cover art ref: ", data.tempo[0].artist.img)
-        // console.log("Genre: ", data.tempo[0].artist.genres[0])
-        // console.log("Tempo: ", data.tempo[0].tempo)
         populateMainSection(data.tempo)
     })
     .catch(err => {console.error(err)});
 }
 
 function populateMainSection(songs) {
+
     let songList = ""
     let numOfSongs = 5
     for (let i=0; i<numOfSongs; i++) {
 
+        let songInfo = {
+            art : songs[i].artist.img,
+            title: songs[i].song_title,
+            artist: songs[i].artist.name
+        }
         let tempSection = 
             `<section>
-            <img class="main-album-art" src="${songs[i].artist.img}">
+            <img class="main-album-art" src="${songs[i].artist.img}" onerror=this.src="./Assets/images/blank-album.jpeg">
             <div class="right-half">
                 <div class="title-container">
                     <h3>${songs[i].song_title}</h3>
-                    <p>+</p>
+                    <p class="plus-button" id="plus-button-${i}">+</p>
                 </div>
                 <ul>
                     <li>Artist: <span>${songs[i].artist.name}</span></li>
@@ -141,14 +145,50 @@ function populateMainSection(songs) {
             </div>
             </section>`
         songList = songList + tempSection
+        songInfoArr.push(songInfo)
     }
     mainEl.innerHTML = songList
+    let plusBtnElArr = document.querySelectorAll(".plus-button")
+    plusBtnElArr.forEach((el) => {
+        el.addEventListener("click", plusBtnHandler)
+    })
     getUserLocation();
+}
+
+function plusBtnHandler(e) {
+
+    let index = e.target.id.split("-").slice(-1)[0]
+    let art = songInfoArr[index].art
+    let title = songInfoArr[index].title
+    let artist = songInfoArr[index].artist
+    localStorage.setItem(localStorage.length, [art, title, artist])
+    populateAsideSection()
+}
+
+function populateAsideSection() {
+
+    let asideSongs = ''
+    for (let i=0; i<localStorage.length; i++) {
+
+        let asideTempSong =
+        `<div class="saved-song uk-card uk-grid-collapse uk-child-width-1-2@s uk-margin saved-songs uk-grid>
+            <div class="uk-card-media-left uk-cover-container song-repo">
+                <img src="${localStorage.getItem(localStorage.key(i)[0]).split(",")[0]}" alt="" onerror=this.src="./Assets/images/blank-album.jpeg" height="100px" width="100px">
+                <div class="flex-container uk-card-body playlist-item">
+                    <h3 class="uk-card-title">${localStorage.getItem(localStorage.key(i)[0]).split(",")[1]}</h3>
+                    <p>${localStorage.getItem(localStorage.key(i)[0]).split(",")[2]}</p>
+                </div>
+            </div>      
+        </div>`
+        asideSongs = asideSongs + asideTempSong
+    }
+    asideEl.innerHTML = asideSongs
 }
 
 //////////////: Event Listeners Below ://////////////////////////
 
 searchBtnEl.addEventListener("click", searchBtnHandler)
+populateAsideSection()
 
 //////////////// Gigi /////////////////
 // Add real-time year
