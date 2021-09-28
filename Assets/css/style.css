@@ -9,6 +9,7 @@
 
 body {
     background-color: rgb(27, 26, 26); /* Gigi */
+    
 }
 
 
@@ -19,6 +20,7 @@ body {
   }
   
 .container {
+    min-height: 89vh;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
