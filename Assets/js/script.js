@@ -77,4 +77,14 @@ window.onload = function() {
     }, 2000)
   }
 
+// Modal disappears on click of Close button
+close.addEventListener("click", () => {
+  popup.style.display = "none";
+});
 
+
+// Modal disappears on click of Get Started button
+getStarted.addEventListener("click", () => { 
+        popup.style.display = "none";
+
+  });
