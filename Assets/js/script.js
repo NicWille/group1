@@ -130,7 +130,7 @@ function populateMainSection(songs) {
             artist: songs[i].artist.name
         }
         let tempSection = 
-            `<section>
+            `<section class="searchResults">
             <img class="main-album-art" src="${songs[i].artist.img}" onerror=this.src="./Assets/images/blank-album.jpeg">
             <div class="right-half">
                 <div class="title-container">
@@ -173,7 +173,7 @@ function populateAsideSection() {
         let asideTempSong =
         `<div class="saved-song uk-card uk-grid-collapse uk-child-width-1-2@s uk-margin saved-songs uk-grid>
             <div class="uk-card-media-left uk-cover-container song-repo">
-                <img src="${localStorage.getItem(localStorage.key(i)[0]).split(",")[0]}" alt="" onerror=this.src="./Assets/images/blank-album.jpeg" height="100px" width="100px">
+                <img src="${localStorage.getItem(localStorage.key(i)[0]).split(",")[0]}" alt="" onerror=this.src="./Assets/images/blank-album.jpeg" class="sidebarImage">
                 <div class="flex-container uk-card-body playlist-item">
                     <h3 class="uk-card-title">${localStorage.getItem(localStorage.key(i)[0]).split(",")[1]}</h3>
                     <p>${localStorage.getItem(localStorage.key(i)[0]).split(",")[2]}</p>

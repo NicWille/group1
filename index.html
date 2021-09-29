@@ -16,29 +16,30 @@
         <div class="header">
             <header class="hero">
                 <h1 class="app-title">Tempo Finder</h1>
-                <h2>Enter Your Tempo for A Great Play List And Local Weather</h2>
+                <h2>What's your tempo?</h2>
                 <form class="search-bar">
                     <label for="tempo-search"></label>
 
                     <input type="text" class="search-value" name="tempo-search" id="search-value"
-                        placeholder="Enter a number between 40-220" required>
+                        placeholder="Enter number 40-220" required>
                     <button type="button" class="submitBtn btn-style" id="search-button">Submit</button>
 
                 </form>
+                <div class="weather-container weather-box">
+                    <p id="weatherTitle" class="uk-card-title">Weather Information<span id="weatherTitle2"></span></p>
+                        <p id="temp"></p>
+                        <p id="wind"></p>
+                        <p  id="humidity"></p>
+                        <p>UV Index: <span id="currentUV" class ="uVBox">N/D</span></p>
+                </div>
 
             </header>
 
         </div> <!-- Close header section -->
 
-    <div class="uk-card-media-left weather-container">
-        <p id="weatherTitle" class="uk-card-title">Weather Information<span id="weatherTitle2"></span></p>
-            <p id="temp"></p>
-            <p id="wind"></p>
-            <p  id="humidity"></p>
-            <p>UV Index: <span id="currentUV" class ="uVBox">N/D</span></p>
-    </div>
+    
 
-    <aside class="uk-card uk-grid-collapse uk-child-width-1-2@s uk-margin saved-songs uk-grid"></aside>
+    <aside class=""></aside>
     <main class="wallpaper"></main>
 </div> <!-- Close Container -->
 
