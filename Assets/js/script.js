@@ -8,9 +8,7 @@ let bpmApi = {
 }
 let songInfoArr = []
 
-
 ////START WEATHER FUNCTION////
-
 //Start Global Weater Variables
 var weatherBtnEl = document.querySelector("#weather-button");
 var weatherInputEl = document.querySelector("#weather-value");
@@ -31,12 +29,9 @@ var locationInformaiton;
 function getWeatherFromLocation(){
     fetch('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude +'&lon=' + longitude +'&units=imperial&excludeminutely,alerts&appid=' + oneCallAPIKey)
     .then(function(response){
-        console.log(response);
         return response.json();
     }).then(function(weatherData){
         currentWeather = (weatherData.current);
-        console.log(weatherData);
-        console.log(currentWeather);
         populateWeather();
     })
 }
@@ -47,19 +42,17 @@ function getCityName() {
     fetch('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + latitude + ',' + longitude +'&key=' + googleAPIKey)
     .then(function(response) {
         if (response.ok) {
-            console.log(response);
             response.json().then(function(locationInfo) {
                 locationInformation =(locationInfo.results[0].address_components);
                 cityName = locationInformation[2].long_name
-                console.log(cityName);
                 getWeatherFromLocation();
             });
         } else {
-            alert("Something went wrong.  Please try again");
+            displayAlert();
         }
     })
     .catch(function(error) {
-        alert("Unable to complete City Search function")
+        displayAlert ();
     });
 }
 //End Get City Name from User Location
@@ -104,10 +97,7 @@ function showPosition(position) {
     getCityName();
 }
 //End Get User Location
-
 /////END WEATHER FUNCTION/////
-
-//////////////: Global Variables Above ://////////////////////////
 
 function searchBtnHandler() {
     fetch(`${bpmApi.url}?api_key=${bpmApi.api_key}&bpm=${searchInputEl.value}`)
@@ -166,10 +156,8 @@ function plusBtnHandler(e) {
 }
 
 function populateAsideSection() {
-
     let asideSongs = ''
     for (let i=0; i<localStorage.length; i++) {
-
         let asideTempSong =
         `<div class="saved-song uk-card uk-grid-collapse uk-child-width-1-2@s uk-margin saved-songs uk-grid>
             <div class="uk-card-media-left uk-cover-container song-repo">
@@ -184,9 +172,36 @@ function populateAsideSection() {
     }
     asideEl.innerHTML = asideSongs
 }
+//Start Alert Modal
+// Get the modal
+var alertModal = document.getElementById("alertModal");
+
+// // Get the button that opens the modal
+// var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("alertClose")[0];
+
+// When the user clicks the button, open the modal 
+displayAlert = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+//End Alert Modal
+
 
 //////////////: Event Listeners Below ://////////////////////////
-
 searchBtnEl.addEventListener("click", searchBtnHandler)
 populateAsideSection()
 
